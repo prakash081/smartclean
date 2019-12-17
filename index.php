@@ -26,7 +26,7 @@
                             
                             <h1 class="page-header">
                                 Page Heading
-                                <small>Secondary Text</small>
+                                <small>Secondary </small>
                             </h1>
 
                             <!-- First Blog Post -->
