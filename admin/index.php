@@ -29,6 +29,7 @@
 
             </div>
             <!-- /.container-fluid -->
+            <div class="robin">welcome to robin system</div>
 
         </div>
         <!-- /#page-wrapper -->
