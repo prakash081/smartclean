@@ -21,7 +21,7 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             WelCome To Admin
-                            <small>Author</small>
+                            <small>Author hjpynuj</small>
                         </h1>
                     </div>
                 </div>
