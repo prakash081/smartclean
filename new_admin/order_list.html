@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Smart Clean I Delivery Services | CRM</title>
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:500,700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="./static/css/main.css">
+
+    <!-- window.location.replace($('#login_success').val()); -->
+
+</head>
+<body>
+<div class="row">
+<div class="col-12 left_sidebar col-md-2">
+    <div class="logo"><img src="./static/images/logo.svg" alt=""></div>
+    <ul class="sidebar-nav">
+      <li role="presentation"><a href=""> <span class="icon_set icon-home menu_icon"></span> Home </a></li>
+      <li role="presentation"><a href=""> <span class="icon_set icon-avatar menu_icon"></span> CRM</a></li>
+      <li role="presentation"><a href=""> <span class="icon_set icon-package menu_icon"></span> Services</a></li>
+      <li role="presentation"><a href=""> <span class="icon_set icon-group menu_icon"></span> Customer</a></li>
+      <li role="presentation"><a href=""> <span class="icon_set icon-settings menu_icon"></span> Roles</a></li>
+    </ul>
+  </div>
+<div class="col-12 col-md-10 no-padding">
+    <div class="top_header">
+        <div class="col-md-10 float-left pl_10">Welcome: {{ user.username }}</div>
+        <div class="col-md-2 float-right">
+
+        </div>
+      </div>
+    <div class="right_sidebar">
+        <div class="float-left col-md-12 no-padding">
+            <div class="col-12 col-md-4 float-left pl_0">
+            <h1 class="header_title float-left mt_15 w-100">Orders </h1>
+            <span class="font_14 float-left grey_color">Showing 120 order received</span>
+        </div>
+            <input type="hidden" id="order_fetch" value="{% url 'base_app:get_order_details' %}" />
+        <div class="col-md-8 col-12 float-right pr_0 mb_15">
+            <input type="email" class="form-control float-left col-md-8 mt_15" placeholder="Search here..">
+            <button type="button" data-toggle="modal" data-target="#create_order_form_parent" class="mt_15 btn primary_btn float-right">Create an Order</button>
+            <button type="button" onclick="getOrderDetails()" class="mt_15 btn primary_btn float-left">Get Details</button>
+            <!-- getOrderDetails -->
+        </div>
+
+        <div class="common_container pt_0">
+        <div class="table-responsive table-striped">
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th>ID</th>
+                    <th>Customer</th>
+                    <th>Order Items</th>
+                    <th>Delivery Location</th>
+                    <th>Agent Name</th>
+                    <th>Booked on</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <td style="width:5%;">{{ order.order_meta.order_id }}</td>
+                        <td style="width:8%;">{{ order.order_foreign.user_customer.user }}</td>
+                        <td style="width:25%;">{{ order.order_meta.order_items }}</td>
+                        <td style="width:17%;">{{ order.order_foreign.user_customer.user_location_display }}</td>
+                        <td style="width:10%;">{{ order.order_foreign.user_delivery_agent }}</td>
+                        <td style="width:10%;">{{ order.order_meta.created_at }}</td>
+                        <td style="width:12%;">{{ order.order_meta.status }}</td>
+                        <td style="width:13%;">
+                        <input type="hidden" value="{{ order.order_meta.slug }}" /> 
+                        <button  onclick="proceedEdit('{{ order.order_meta.slug }}')" type="button" name="button" class="float-left"> Edit</button> 
+                        <button  onclick="proceedView('{{ order.order_meta.slug }}')" type="button" name="button" class="float-left"> View</button> </td>
+                    </tr>
+                    
+                </tbody>
+                </table>
+        </div>
+        </div>
+    
+
+    </div>
+</div>
+<script src="./static/js/jquery-3.4.1.js"></script>
+</body>
+</html>
